@@ -1,56 +1,66 @@
-
-
-
-
-// function testClick (){
-    //     alert("Click work");
-    //     preventDefault();
-// }    
-
-function currentConditions(){
+$(document).ready(function(){
+    var weatherContainer = $(".weather-container");
     
-}
-function fiveForecast(){
-
-}
-function searchHistory(){
-    var city = $(this).attr("data-city")
-    var APIkey = '27de6d576f342169797bf1826864e56a';
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=27de6d576f342169797bf1826864e56a";    
+    function citySearch(){
+        
+            var city = $(".form-control").val();
+            var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=166a433c57516f51dfab1f7edaed8413";   
     
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response){
-        console.log(queryURL);
-        $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-        $(".wind").text("Wind Speed: " + response.wind.speed);
-        $(".humidity").text("Humidity: " + response.main.humidity);
-        $(".temp").text("Temperature (F) " + response.main.temp);s
+            $.ajax({
+            url: queryURL,
+            method: "GET"
+            }).then(function(response){
+                console.log(response);
+                var cityName = response.name;
+                var hOne = $("<h1>").text(cityName);
+                weatherContainer.append(hOne);
+                var cityWind = response.wind.speed;
+                var hTwo = $("<h2>").text("Wind Speed: " +  cityWind);
+                weatherContainer.append(hTwo);
+                var cityHumid = response.main.humidity;
+                var hHumidity =$("<h2>").text("Humidity: " + cityHumid);
+                weatherContainer.append(hHumidity);
+            // $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+            // $(".wind").text("Wind Speed: " + response.wind.speed);
+            // $(".humidity").text("Humidity: " + response.main.humidity);
+            // $(".temp").text("Temperature (F) " + response.main.temp);
+        
+        });
+    }
+    function uvIndex(){};
+    
+    
+    function currentConditions(){};
+    
+    
+    function fiveForecast(){};
+    
+    
+    $("#button").on("click", function(event){
+        event.preventDefault();
+        citySearch();
+        console.log("hi");
         
     });
-searchHistory();
-}
+    
+});
 
-function uvIndex(){
-
-}
 
 // function getSearchMethod(searchTerm){
-//     if(searchTerm.length === 5 && Number.parseInt(searchTerm) + '' === searchTerm)    
+    //     if(searchTerm.length === 5 && Number.parseInt(searchTerm) + '' === searchTerm)    
 //     searchMethod = 'zip';
 //     else
 //         searchMethod = 'q';
 // }
 
 // function searchWeather(searchTerm){
-//     getSearchMethod(searchTerm);    
+    //     getSearchMethod(searchTerm);    
 //     fetch(`http://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${apikey}&units=${units}`).then(result =>{
-//         return result.json();    
+    //         return result.json();    
 //     }).then(result =>{
-//         init(result);    
-//     })
-// }
+    //         init(result);    
+    //     })
+    // }
 
 // function init(resultFromServer){
 //     switch (resultFromServer.weather[0].main) {
