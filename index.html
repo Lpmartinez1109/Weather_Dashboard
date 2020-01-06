@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Weather Day Dashboard</title>
 </head>
 
@@ -27,57 +26,80 @@
             </nav>
         </div>
         <div class="col-8">
-            <div class="weather-container"></div>
-            <!-- <div class="city"></div>
-            <div class="wind"></div>
-            <div class="humidity"></div>
-            <div class="temp"></div> -->
+            <div class="weather-container">
+                <h2 id="city"></h2>
+                <div class="row">
+                    <div class="col-3">
+                        <div id="temp"></div>
+                        <div id="wind"></div>
+                        <div id="humidity"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-4"></div>
         <div class="col-8">
-            <div class="card" style="width: 18rem;">
+            <h3>Five-Day Forecast:</h3>
+            <div class="card" style="width: 10rem; border-radius: 20px;">
                 <div class="card-body">
-                    <h5 class="date-one">Date</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Temp</h6>
-                    <p class="card-text">Humidity</p>
+                    <h5 id="dateOne">Day One</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                    <p class="card-text">
+                        <div id="tempOne"></div>
+                        <div id="humidityOne"></div>
+                        <div id="windOne"></div>
+                    </p>
                 </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 10rem; border-radius: 20px;">
                 <div class="card-body">
-                    <h5 class="date-two">Date</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Temp</h6>
-                    <p class="card-text">Humidity</p>
-                    </div>
+                    <h5 ids="dateTwo">Day Two</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                    <p class="card-text">
+                        <div id="tempTwo"></div>
+                        <div id="humidityTwo"></div>
+                        <div id="windTwo"></div>
+                    </p>
+                </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 10rem; border-radius: 20px;">
                 <div class="card-body">
-                    <h5 class="date-three">Date</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    </div>
+                    <h5 id="dateThree">Day 3</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                    <p class="card-text">
+                        <div id="tempThree"></div>
+                        <div id="humidityThree"></div>
+                        <div id="windThree"></div>
+                    </p>
+                </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 10rem; border-radius: 20px;">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    </div>
+                    <h5 id="dateFour">Day 4</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                    <p class="card-text">
+                        <div id="tempFour"></div>
+                        <div id="humidityFour"></div>
+                        <div id="windFour"></div>
+                    </p>
+                </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 10rem; border-radius: 20px;">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    </div>
+                    <h5 id="dateFive">Day Five</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                    <p class="card-text">
+                        <div id="tempFive"></div>
+                        <div id="humidityFive"></div>
+                        <div id="windFive"></div>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
     </div>
-</div>
-<!-- <div id="searchContainer">
+    </div>
+    <!-- <div id="searchContainer">
         <input class="searchControl" type="text" placeholder="City Name or Zipcode" id="searchInput">
         <button class="searchControl" id="searchBtn">Search</button>
     </div>
@@ -95,6 +117,9 @@
             </div>
         </div>
     </div> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
