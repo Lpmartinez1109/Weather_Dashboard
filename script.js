@@ -4,9 +4,9 @@ $(document).ready(function(){
     // var date = moment().format('MMMM Do YYYY, h:mm:ss a')
     //     // $("#currentDay").append(date)
     //     var date = moment().hour()
-        var d = new Date();
-        var currentDAy = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear()
-        console.log(today);
+        // var d = new Date();
+        // var currentDay = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear()
+        // console.log(currentDay);
     
     function citySearch(){
         
@@ -21,7 +21,7 @@ $(document).ready(function(){
                 console.log(response.value);
                 console.log(response.coord.lat);
                 console.log(response.coord.lon);
-                console.log(date);
+                // console.log(date);
                 
                 $("#city").text(response.name)
                 $("#wind").text("Wind Speed: " + response.wind.speed + " MPH");
@@ -59,16 +59,34 @@ $(document).ready(function(){
             method: "GET"
         }).then(function(forecast){
             console.log(forecast);
-            
+            // day 1
+            $("#windOne").text("Wind Speed: " + forecast.list[0].wind.speed + " MPH");
+            $("#humidityOne").text("Humidity: " + forecast.list[0].main.humidity + " %")
+            var tempFOne = (forecast.list[0].main.temp - 273.15) * 1.80 + 32;
+            $("#tempOne").text("Temperature: " + tempFOne + "°F");
+            // day 2
+            $("#windTwo").text("Wind Speed: " + forecast.list[7].wind.speed + " MPH");
+            $("#humidityTwo").text("Humidity: " + forecast.list[7].main.humidity + " %")
+            var tempFTwo = (forecast.list[7].main.temp - 273.15) * 1.80 + 32;
+            $("#tempTwo").text("Temperature: " + tempFTwo + "°F");
+            // day 3
+            $("#windThree").text("Wind Speed: " + forecast.list[15].wind.speed + " MPH");
+            $("#humidityThree").text("Humidity: " + forecast.list[15].main.humidity + " %")
+            var tempFThree = (forecast.list[15].main.temp - 273.15) * 1.80 + 32;
+            $("#tempThree").text("Temperature: " + tempFThree + "°F");
+            // day 4
+            $("#windFour").text("Wind Speed: " + forecast.list[23].wind.speed + " MPH");
+            $("#humidityFour").text("Humidity: " + forecast.list[23].main.humidity + " %")
+            var tempFFour = (forecast.list[23].main.temp - 273.15) * 1.80 + 32;
+            $("#tempFour").text("Temperature: " + tempFFour + "°F");
+            // day 5
+            $("#windFive").text("Wind Speed: " + forecast.list[31].wind.speed + " MPH");
+            $("#humidityFive").text("Humidity: " + forecast.list[31].main.humidity + " %")
+            var tempFFive = (forecast.list[31].main.temp - 273.15) * 1.80 + 32;
+            $("#tempFive").text("Temperature: " + tempFFive + "°F");
         })
     }
-    function uvIndex(){};
     
-    
-    function currentConditions(){};
-    
-    
-    function fiveForecast(){};
     
     
     $("#button").on("click", function(event){
