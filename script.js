@@ -2,9 +2,9 @@ var d = new Date();
 var currentDay = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
 var dayOne = (d.getMonth() + 1) + "/" + (d.getDate() + 1) + "/" + d.getFullYear();
 var dayTwo = (d.getMonth() + 1) + "/" + (d.getDate() + 2) + "/" + d.getFullYear();
-var dayThree = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
-var dayFour = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
-var dayFive = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
+var dayThree = (d.getMonth() + 1) + "/" + (d.getDate() + 3) + "/" + d.getFullYear();
+var dayFour = (d.getMonth() + 1) + "/" + (d.getDate() + 4) + "/" + d.getFullYear();
+var dayFive = (d.getMonth() + 1) + "/" + (d.getDate()+5 ) + "/" + d.getFullYear();
 console.log(currentDay);
 console.log(dayOne);
 console.log(dayTwo);
@@ -21,20 +21,25 @@ $(document).ready(function(){
     
     function citySearch(){
         
-            var city = $(".form-control").val();
-            var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=166a433c57516f51dfab1f7edaed8413";   
-    
-            $.ajax({
+        var city = $(".form-control").val();
+        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=166a433c57516f51dfab1f7edaed8413";   
+        
+        $.ajax({
             url: queryURL,
             method: "GET"
-            }   ).then(function(response){
-                console.log(response);
-                console.log(response.value);
-                console.log(response.coord.lat);
-                console.log(response.coord.lon);
+        }   ).then(function(response){
+            console.log(response);
+            console.log(response.value);
+            console.log(response.coord.lat);
+            console.log(response.coord.lon);
+            console.log(response.weather[0].icon);
+            // var iconPNG = response.weather[0].icon;
+            // var iconURL= "http://openweathermap.org/img/wn/" + iconPNG + "@2x.png";
+            
                 // console.log(date);
                 
-                $("#city").text(response.name + " " + currentDay)
+                $("#city").text(response.name + " " + "(" + currentDay + ")" + iconURL);
+
                 $("#wind").text("Wind Speed: " + response.wind.speed + " MPH");
                 $("#humidity").text("Humidity: " + response.main.humidity + " %")
                 var tempF = (response.main.temp - 273.15) * 1.80 + 32;
@@ -71,31 +76,37 @@ $(document).ready(function(){
         }).then(function(forecast){
             console.log(forecast);
             // day 1
+            $("#dateOne").text(dayOne);
             $("#windOne").text("Wind Speed: " + forecast.list[0].wind.speed + " MPH");
             $("#humidityOne").text("Humidity: " + forecast.list[0].main.humidity + " %")
             var tempFOne = (forecast.list[0].main.temp - 273.15) * 1.80 + 32;
             $("#tempOne").text("Temperature: " + tempFOne + "°F");
             // day 2
+            $("#dateTwo").text(dayTwo);
             $("#windTwo").text("Wind Speed: " + forecast.list[7].wind.speed + " MPH");
             $("#humidityTwo").text("Humidity: " + forecast.list[7].main.humidity + " %")
             var tempFTwo = (forecast.list[7].main.temp - 273.15) * 1.80 + 32;
             $("#tempTwo").text("Temperature: " + tempFTwo + "°F");
             // day 3
+            $("#dateThree").text(dayThree);
             $("#windThree").text("Wind Speed: " + forecast.list[15].wind.speed + " MPH");
             $("#humidityThree").text("Humidity: " + forecast.list[15].main.humidity + " %")
             var tempFThree = (forecast.list[15].main.temp - 273.15) * 1.80 + 32;
             $("#tempThree").text("Temperature: " + tempFThree + "°F");
             // day 4
+            $("#dateFour").text(dayFour);
             $("#windFour").text("Wind Speed: " + forecast.list[23].wind.speed + " MPH");
             $("#humidityFour").text("Humidity: " + forecast.list[23].main.humidity + " %")
             var tempFFour = (forecast.list[23].main.temp - 273.15) * 1.80 + 32;
             $("#tempFour").text("Temperature: " + tempFFour + "°F");
             // day 5
+            $("#dateFive").text(dayFive)
             $("#windFive").text("Wind Speed: " + forecast.list[31].wind.speed + " MPH");
             $("#humidityFive").text("Humidity: " + forecast.list[31].main.humidity + " %")
             var tempFFive = (forecast.list[31].main.temp - 273.15) * 1.80 + 32;
             $("#tempFive").text("Temperature: " + tempFFive + "°F");
-        })
+
+        });
     }
     
     

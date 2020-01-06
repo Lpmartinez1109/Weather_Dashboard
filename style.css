@@ -8,6 +8,7 @@ h1 {
 
 h2 {
 	font-size: 3rem;
+	text-align: left;
 }
 
 h3 {
@@ -18,16 +19,24 @@ span {
 	font-size: 6rem;
 	font-weight: 600;
 }
+#weather-header{
+	text-align: center;
+}
 
-.container {
-	max-width: 550px;
-	height: 100vh;
+.weather-container {
+	/* max-width: 550px; */
+	height: 250px;
 	border: 1px solid black;
+	border-radius: 20px;
 	margin: 0 auto;
 	text-align: center;
 	display: grid;
 	grid-template-rows: 20% 80%;
 	padding: 25px 5px;
+	/* flex-direction: column; */
+}
+.weather-container > div{
+	height: 100px;
 }
 
 .degrees {
@@ -48,7 +57,32 @@ img {
 	color: blanchedalmond;
 }
 .card {
-	float: right;
+	float: left;
 	background-color: blue;
 	border-color: black;
+	border-radius: 20px;
+}
+.card-body{
+	background-color: rgb(50, 50, 240);
+	border-radius: 20px;
+}
+#city{
+	text-align: left;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#temp{
+	text-align: left;
+}
+#wind{
+	text-align: left;
+	/* height: 200px; */
+}
+#humidity{
+	text-align: left;
+}
+.col{
+	background-color: dimgray;
+}
+.tempOne{
+	color: floralwhite;
 }
