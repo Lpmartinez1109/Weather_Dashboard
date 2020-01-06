@@ -1,12 +1,23 @@
+var d = new Date();
+var currentDay = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
+var dayOne = (d.getMonth() + 1) + "/" + (d.getDate() + 1) + "/" + d.getFullYear();
+var dayTwo = (d.getMonth() + 1) + "/" + (d.getDate() + 2) + "/" + d.getFullYear();
+var dayThree = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
+var dayFour = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
+var dayFive = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
+console.log(currentDay);
+console.log(dayOne);
+console.log(dayTwo);
+console.log(dayThree);
+console.log(dayFour);
+console.log(dayFive);
+
 $(document).ready(function(){
     var weatherContainer = $(".weather-container");
     var userInput = $("form-control");
     // var date = moment().format('MMMM Do YYYY, h:mm:ss a')
     //     // $("#currentDay").append(date)
     //     var date = moment().hour()
-        // var d = new Date();
-        // var currentDay = (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear()
-        // console.log(currentDay);
     
     function citySearch(){
         
@@ -23,7 +34,7 @@ $(document).ready(function(){
                 console.log(response.coord.lon);
                 // console.log(date);
                 
-                $("#city").text(response.name)
+                $("#city").text(response.name + " " + currentDay)
                 $("#wind").text("Wind Speed: " + response.wind.speed + " MPH");
                 $("#humidity").text("Humidity: " + response.main.humidity + " %")
                 var tempF = (response.main.temp - 273.15) * 1.80 + 32;
