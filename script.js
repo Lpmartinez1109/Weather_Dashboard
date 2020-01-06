@@ -11,6 +11,9 @@ console.log(dayTwo);
 console.log(dayThree);
 console.log(dayFour);
 console.log(dayFive);
+var citySave = [];
+// console.log(citySave);
+
 
 $(document).ready(function(){
     var weatherContainer = $(".weather-container");
@@ -22,8 +25,14 @@ $(document).ready(function(){
     function citySearch(){
         
         var city = $(".form-control").val();
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=166a433c57516f51dfab1f7edaed8413";   
-        
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=166a433c57516f51dfab1f7edaed8413";   
+        var urlSave = {
+            city: city, 
+            queryURL: queryURL
+         }
+         citySave.push(urlSave);
+         console.log(citySave);
+         
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -32,18 +41,19 @@ $(document).ready(function(){
             console.log(response.value);
             console.log(response.coord.lat);
             console.log(response.coord.lon);
-            console.log(response.weather[0].icon);
-            // var iconPNG = response.weather[0].icon;
-            // var iconURL= "http://openweathermap.org/img/wn/" + iconPNG + "@2x.png";
+            // console.log(response.weather[0].icon);
             
                 // console.log(date);
                 
-                $("#city").text(response.name + " " + "(" + currentDay + ")" + iconURL);
+                $("#city").text(response.name + " " + "(" + currentDay + ")");
 
                 $("#wind").text("Wind Speed: " + response.wind.speed + " MPH");
                 $("#humidity").text("Humidity: " + response.main.humidity + " %")
-                var tempF = (response.main.temp - 273.15) * 1.80 + 32;
+                var tempF = ((response.main.temp - 273.15) * 1.80 + 32).toFixed(1);
                 $("#temp").text("Temperature: " + tempF + "°F");
+                var weatherSave = JSON.stringify(citySave);
+                console.log(weatherSave);
+                
                 // var coordinatesLat = (response.coord.lat);
                 // var coordinatesLon = (response.coord.lon);
                 // var pOne = $("<p>").text("Location: " + coordinatesLat + "," + coordinatesLon);
@@ -68,7 +78,7 @@ $(document).ready(function(){
         
         });
         // var uvURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?" +
-        var forecastURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=166a433c57516f51dfab1f7edaed8413";
+        var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=166a433c57516f51dfab1f7edaed8413";
 
         $.ajax({
             url: forecastURL,
@@ -79,31 +89,31 @@ $(document).ready(function(){
             $("#dateOne").text(dayOne);
             $("#windOne").text("Wind Speed: " + forecast.list[0].wind.speed + " MPH");
             $("#humidityOne").text("Humidity: " + forecast.list[0].main.humidity + " %")
-            var tempFOne = (forecast.list[0].main.temp - 273.15) * 1.80 + 32;
+            var tempFOne = ((forecast.list[0].main.temp - 273.15) * 1.80 + 32).toFixed(1);
             $("#tempOne").text("Temperature: " + tempFOne + "°F");
             // day 2
             $("#dateTwo").text(dayTwo);
             $("#windTwo").text("Wind Speed: " + forecast.list[7].wind.speed + " MPH");
             $("#humidityTwo").text("Humidity: " + forecast.list[7].main.humidity + " %")
-            var tempFTwo = (forecast.list[7].main.temp - 273.15) * 1.80 + 32;
+            var tempFTwo = ((forecast.list[7].main.temp - 273.15) * 1.80 + 32).toFixed(1);
             $("#tempTwo").text("Temperature: " + tempFTwo + "°F");
             // day 3
             $("#dateThree").text(dayThree);
             $("#windThree").text("Wind Speed: " + forecast.list[15].wind.speed + " MPH");
             $("#humidityThree").text("Humidity: " + forecast.list[15].main.humidity + " %")
-            var tempFThree = (forecast.list[15].main.temp - 273.15) * 1.80 + 32;
+            var tempFThree = ((forecast.list[15].main.temp - 273.15) * 1.80 + 32).toFixed(1);
             $("#tempThree").text("Temperature: " + tempFThree + "°F");
             // day 4
             $("#dateFour").text(dayFour);
             $("#windFour").text("Wind Speed: " + forecast.list[23].wind.speed + " MPH");
             $("#humidityFour").text("Humidity: " + forecast.list[23].main.humidity + " %")
-            var tempFFour = (forecast.list[23].main.temp - 273.15) * 1.80 + 32;
+            var tempFFour = ((forecast.list[23].main.temp - 273.15) * 1.80 + 32).toFixed(1);
             $("#tempFour").text("Temperature: " + tempFFour + "°F");
             // day 5
             $("#dateFive").text(dayFive)
             $("#windFive").text("Wind Speed: " + forecast.list[31].wind.speed + " MPH");
             $("#humidityFive").text("Humidity: " + forecast.list[31].main.humidity + " %")
-            var tempFFive = (forecast.list[31].main.temp - 273.15) * 1.80 + 32;
+            var tempFFive = ((forecast.list[31].main.temp - 273.15) * 1.80 + 32).toFixed(1);
             $("#tempFive").text("Temperature: " + tempFFive + "°F");
 
         });
@@ -115,6 +125,7 @@ $(document).ready(function(){
         event.preventDefault();
         citySearch();
         // console.log("hi");
+    
     });
     userInput.keypress(function(event){
         if (event.which === 13){
