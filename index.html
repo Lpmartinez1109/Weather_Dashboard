@@ -2,124 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Weather Day Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Weather Dashboard</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1" id="weather-header">Weather Dashboard</span>
-    </nav>
+  <header class="container-fluid text-center text-white bg-dark p-2">
+    <h1>Weather Dashboard</h1>
+  </header>
+
+  <div class="container-fluid">
     <div class="row">
-        <div class="col-4">
-            <nav class="navbar navbar-dark bg-dark">
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search By City" aria-label="Search">
-                    <button id="button" type="submit">Search</button>
-                </form>
-                <div id="city-view"></div>
-            </nav>
+      <aside class="col-lg-3 bg-light">
+        <h5 class="mt-1">Search for a City:</h5>
+        <div class="form-inline form-group">
+          <input class="form-control" type="text" id="search-value" />
+          <button class="btn btn-primary" id="search-button"> <i class="fa fa-search"></i> </button>
         </div>
-        <div class="col-8">
-            <div class="weather-container">
-                <h2 id="city"></h2>
-                <div class="row">
-                    <div class="col-3">
-                        <div id="temp"></div>
-                        <div id="wind"></div>
-                        <div id="humidity"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-4"></div>
-        <div class="col-8">
-            <h3>Five-Day Forecast:</h3>
-            <div class="card" style="width: 10rem; border-radius: 20px;">
-                <div class="card-body">
-                    <h5 id="dateOne"></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"></h6>
-                    <p class="card-text">
-                        <div id="tempOne"></div>
-                        <div id="humidityOne"></div>
-                        <div id="windOne"></div>
-                    </p>
-                </div>
-            </div>
-            <div class="card" style="width: 10rem; border-radius: 20px;">
-                <div class="card-body">
-                    <h5 id="dateTwo"></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"></h6>
-                    <p class="card-text">
-                        <div id="tempTwo"></div>
-                        <div id="humidityTwo"></div>
-                        <div id="windTwo"></div>
-                    </p>
-                </div>
-            </div>
-            <div class="card" style="width: 10rem; border-radius: 20px;">
-                <div class="card-body">
-                    <h5 id="dateThree"></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"></h6>
-                    <p class="card-text">
-                        <div id="tempThree"></div>
-                        <div id="humidityThree"></div>
-                        <div id="windThree"></div>
-                    </p>
-                </div>
-            </div>
-            <div class="card" style="width: 10rem; border-radius: 20px;">
-                <div class="card-body">
-                    <h5 id="dateFour"></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"></h6>
-                    <p class="card-text">
-                        <div id="tempFour"></div>
-                        <div id="humidityFour"></div>
-                        <div id="windFour"></div>
-                    </p>
-                </div>
-            </div>
-            <div class="card" style="width: 10rem; border-radius: 20px;">
-                <div class="card-body">
-                    <h5 id="dateFive"></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"></h6>
-                    <p class="card-text">
-                        <div id="tempFive"></div>
-                        <div id="humidityFive"></div>
-                        <div id="windFive"></div>
-                    </p>
-                </div>
-            </div>
-        </div>
+
+        <ul class="list-group history"></ul>
+      </aside>
+
+      <div class="col-lg-9">
+        <div id="today" class="mt-3"></div>
+        <div id="forecast" class="mt-3"></div>
+      </div>
     </div>
-    </div>
-    </div>
-    <!-- <div id="searchContainer">
-        <input class="searchControl" type="text" placeholder="City Name or Zipcode" id="searchInput">
-        <button class="searchControl" id="searchBtn">Search</button>
-    </div>
-    <div>
-        <div id="weatherContainer">
-            <div id="weatherDescription">
-                <h1 id="cityHeader"></h1>
-                <div id="weatherMain">
-                    <div id="temperature"></div>
-                    <div id="weatherDescriptionHeader"></div>
-                </div>
-                <hr>
-                <div id="windSpeed" class="bottomDetails"></div>
-                <div id="humidity" class="bottomDetails"></div>
-            </div>
-        </div>
-    </div> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="weather.js"></script>
 </body>
 
 </html>

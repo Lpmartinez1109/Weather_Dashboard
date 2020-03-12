@@ -13,6 +13,7 @@ console.log(dayFour);
 console.log(dayFive);
 var citySave = [];
 // console.log(citySave);
+var cityView = $("#city-view")
 
 
 $(document).ready(function(){
@@ -46,14 +47,19 @@ $(document).ready(function(){
                 // console.log(date);
                 
                 $("#city").text(response.name + " " + "(" + currentDay + ")");
-
+                var iconCode = response.weather[0].icon;
+                var iconURl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+                var iconPNG = $("<img>").attr("src", iconURl);
                 $("#wind").text("Wind Speed: " + response.wind.speed + " MPH");
                 $("#humidity").text("Humidity: " + response.main.humidity + " %")
                 var tempF = ((response.main.temp - 273.15) * 1.80 + 32).toFixed(1);
                 $("#temp").text("Temperature: " + tempF + "°F");
                 var weatherSave = JSON.stringify(citySave);
-                console.log(weatherSave);
+                // $("#image-icon").attr("src", iconPNG);S
+                console.log(iconPNG);
                 
+                console.log(weatherSave);
+
                 // var coordinatesLat = (response.coord.lat);
                 // var coordinatesLon = (response.coord.lon);
                 // var pOne = $("<p>").text("Location: " + coordinatesLat + "," + coordinatesLon);
@@ -118,7 +124,9 @@ $(document).ready(function(){
 
         });
     }
-    
+    // function storeCityName(){
+    //     localStorage.setItem(, JSON.stringify(weatherSave))
+    // }
     
     
     $("#button").on("click", function(event){
