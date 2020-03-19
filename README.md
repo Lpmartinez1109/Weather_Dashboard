@@ -1,7 +1,10 @@
-# Weather_Dashboard_HW
+# Weather_Dashboard
 
-For this assignment, the goal was to create a working weather dashboard that would not only display the current day forecast but provide a five day forecast as well. Using the openweather api, I was able to pull the current weather informaiton and display it on the html.
+Using the Weather Dashboard, you can look up the current forecast of any given city as well as a five-day forecast below. 
+Users will be able to view the current temperature in fahrenheit, current humidity levels, wind speed and ultra-violet index.
 
-After some work, I managed to get the five forecast working as well. The biggest issue was dealing with a large amount of white space inside the main weather display.
+After selecting a city, User will be able to view any past searches on the left side of the screen underneth the search bar.
 
-Users can search for any city in the world and get the most update to date information regarding the weather, temp, wind speed and humidity in the surrounding arena.
+
+# How It Works
+![Weather_Dashboard](Weather_Dashboard.PNG)
