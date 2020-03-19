@@ -12,17 +12,14 @@ console.log(dayThree);
 console.log(dayFour);
 console.log(dayFive);
 var citySave = [];
-// console.log(citySave);
-var cityView = $("#city-view")
+var cityView = $("#city-view");
+
 
 
 $(document).ready(function(){
     var weatherContainer = $(".weather-container");
     var userInput = $("form-control");
-    // var date = moment().format('MMMM Do YYYY, h:mm:ss a')
-    //     // $("#currentDay").append(date)
-    //     var date = moment().hour()
-    
+   
     function citySearch(){
         
         var city = $(".form-control").val();
