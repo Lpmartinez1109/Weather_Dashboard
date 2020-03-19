@@ -7,4 +7,4 @@ After selecting a city, User will be able to view any past searches on the left 
 
 
 # How It Works
-![Weather_Dashboard](Weather_Dashboard.PNG)
+![Weather_Dashboard.PNG](Weather_Dashboard.PNG)
