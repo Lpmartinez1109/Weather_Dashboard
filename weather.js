@@ -36,7 +36,8 @@ $(document).ready(function() {
           var wind = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + " MPH");
           var humid = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
           var fahrenheit = ((data.main.temp - 273.15) * 1.80 + 32)
-          var temp = $("<p>").addClass("card-text").text("Temperature: " + fahrenheit + " °F");
+          var fahrenheitDec = fahrenheit.toFixed(2);
+          var temp = $("<p>").addClass("card-text").text("Temperature: " + fahrenheitDec + " °F");
           var cardBody = $("<div>").addClass("card-body");
           var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
   
@@ -69,7 +70,8 @@ $(document).ready(function() {
   
               var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png");
               var tempF = ((data.list[i].main.temp_max - 273.15) * 1.80 + 32)
-              var p1 = $("<p>").addClass("card-text").text("Temp: " + tempF + " °F");
+              var tempDec = tempF.toFixed(2)
+              var p1 = $("<p>").addClass("card-text").text("Temp: " + tempDec + " °F");
               var p2 = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
   
               col.append(card.append(body.append(title, img, p1, p2)));
